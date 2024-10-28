@@ -9,8 +9,20 @@ Este proyecto está diseñado para extraer datos de una base de datos SQLite y e
 - `Dockerfile`: El archivo Docker que define cómo construir la imagen del contenedor.
 - `requerimientos.txt`: Lista de dependencias necesarias para ejecutar el script.
 
-## Requisitos
+## Deploy
+## Creating the image
+This image is based on [linux/arm64](https://hub.docker.com/_/openjdk/tags?page=1&name=17) for Linux.
+The complete specification of the image that contains the application is in the [Dockerfile](Dockerfile)
+## Building the image.
+Build the image using `docker` or `podman`, below the commands for using podman. More information on how to use it [here](https://podman.io/). The first version for a standard is frequently used `1.0.`
 
+
+> [!Warning]
+>  Don't forget to use your Hub's account to tag the image, because when pushing the image to the hub, the account is where it will be located.
+
+`docker build -t ecno20/extract_to_CSV .`
+
+## Requisitos
 - Docker
 - Python 3.9
 - SQLite
@@ -26,12 +38,12 @@ cd Escritorio/Docker/python
 ### 2.Construir la imagen Docker
 
 ```bash
-docker build -t extract_to_CSV .
+docker build -t ecno20/extract_to_CSV .
 ```
 ### 3. Ejecutar el contenedor
 
 ```bash
-docker run --name python_to_CSV extract_to_CSV
+docker run --name python_to_CSV ecno20/extract_to_CSV
 ```
 ### Mantainer:
 [ecno20/Jonathan Díaz](https://github.com/ecno20/)
@@ -48,3 +60,46 @@ El archivo CSV generado estará en el directorio principal del contenedor y pued
    git push -u origin master
 
 ```
+### Opcional:
+Configuración Inicial de Git: Si no lo has hecho ya, configura tu nombre de usuario y tu correo electrónico para Git. Abre una terminal y ejecuta:
+
+```bash
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu_email@example.com"
+```
+### Inicio de Sesión en GitHub: 
+El método más moderno y seguro para autenticarte con GitHub es utilizando un token de acceso personal (PAT) en lugar de una contraseña.
+
+### 1. Creación del Token de Acceso Personal:
+
+* Ve a GitHub Tokens y crea un nuevo token.
+* Dale un nombre descriptivo y selecciona los permisos que necesites (los básicos para repositorios suelen ser suficientes).
+* Guarda el token en un lugar seguro.
+
+### 2. Uso del Token en la Línea de Comandos: 
+Cuando empujes (push) cambios por primera vez, Git te pedirá que ingreses tus credenciales. Ingresa tu nombre de usuario de GitHub y en lugar de una contraseña, pega tu token de acceso personal.
+```bash
+git push origin master
+```
+
+### 3. Git te pedirá:
+```bash
+Username for 'https://github.com': tu_usuario
+Password for 'https://tu_usuario@github.com': (aquí pegas tu token)
+```
+### Guardar Credenciales Opcionalmente: 
+Para evitar ingresar el token cada vez, puedes almacenar tus credenciales de manera segura utilizando el asistente de credenciales de Git:
+```bash
+git config --global credential.helper store
+```
+
+### Reference Documentation
+For further reference, please consider the following sections:
+
+* [Overview of Docker Hub](https://docs.docker.com/docker-hub/)
+* [Python Docs](https://docs.python.org/3/)
+### Guides
+The following guides illustrate how to use some features concretely:
+
+* [Docker HUB API](https://docs.docker.com/docker-hub/api/latest/)
+* [Python Tutorial](https://docs.python.org/3/tutorial/)
