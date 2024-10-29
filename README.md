@@ -40,11 +40,27 @@ cd Escritorio/Docker/python
 ```bash
 docker build -t ecno20/extract_to_CSV .
 ```
-### 3. Ejecutar el contenedor
+### 3. Instrucción para Ejecutar el Contenedor
+Para ejecutar el contenedor y montar un volumen para persistir el archivo CSV fuera del contenedor, usa la siguiente instrucción:
+```bash
+docker run --name python_to_CSV -v $(pwd)/output:/app/output ecno20/extract_to_CSV
+```
+### Explicación:
+`--name python_to_CSV` : Nombre que se le da al contenedor.
+
+`-v $(pwd)/output:/app/output` : Monta la carpeta output en tu máquina local al directorio /app/output en el contenedor. Esto permite que los archivos generados dentro del contenedor se almacenen de manera local.
+
+`ecno20/extract_to_CSV` : Nombre de la imagen que estás ejecutando (para nuestro proyecto utilizamos ecno20/extract_to_CSV.
+
+### Ver Logs de un Contenedor en Ejecución:
+
+Si el contenedor ya está en ejecución, puedes ver los logs con el siguiente comando:
 
 ```bash
-docker run --name python_to_CSV ecno20/extract_to_CSV
+docker logs -f python_to_CSV
 ```
+El flag `-f` (follow) te permite ver la salida en tiempo real
+
 ### Mantainer:
 [ecno20/Jonathan Díaz](https://github.com/ecno20/)
 
