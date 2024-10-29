@@ -25,5 +25,8 @@ RUN pip install --no-cache-dir -r requerimientos.txt
 # Copia el script Python al contenedor
 COPY src/extraccion_basededatos.py /app/extraccion_basededatos.py
 
+# Copia la base de datos al contenedor
+COPY personal.db /app/personal.db
+
 # Comando para ejecutar el script
 CMD ["python", "extraccion_basededatos.py"]
