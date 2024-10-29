@@ -109,6 +109,19 @@ Para evitar ingresar el token cada vez, puedes almacenar tus credenciales de man
 git config --global credential.helper store
 ```
 
+### Estructura del Proyecto
+```bash
+.
+├── src
+│   ├── extraccion_basededatos.py
+│   └── crear_db.py
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── requerimientos.txt
+└── personal.db
+```
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
